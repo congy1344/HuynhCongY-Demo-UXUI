@@ -6,7 +6,29 @@ Gather & Graze là ứng dụng web quản lý công thức và lập kế hoạ
 
 ## Preview
 
+### Trang chủ - Dark mode
+
 ![Giao diện trang chủ Gather & Graze](docs/preview.png)
+
+### Công thức nổi bật
+
+![Danh sách công thức nổi bật](docs/preview2.png)
+
+### Danh mục công thức
+
+![Trang danh mục công thức](docs/recipes-page.png)
+
+### Lịch món ăn
+
+![Trang lập kế hoạch món ăn trong tuần](docs/meal-planner-page.png)
+
+### Món yêu thích
+
+![Trang danh sách món yêu thích](docs/favorites-page.png)
+
+### Trang chủ - Light mode
+
+![Giao diện trang chủ ở chế độ sáng](docs/light-mode.png)
 
 ## Tech Stack
 

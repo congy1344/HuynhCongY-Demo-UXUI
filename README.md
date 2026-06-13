@@ -1,104 +1,68 @@
-# StudyFlow
+# Gather & Graze
 
-StudyFlow là website dashboard quản lý đồ án dành cho sinh viên. Dự án được xây dựng như một sản phẩm demo UX/UI hoàn chỉnh để thể hiện khả năng thiết kế giao diện, tổ chức React component và xử lý dữ liệu phía client.
+Gather & Graze is a polished React UX/UI demo for discovering recipes, saving favorites, and planning a week of meals. It uses mock data only, so the full experience runs locally without a backend.
 
-## Điểm nổi bật
+## Features
 
-- Dashboard tổng quan với thống kê được tính từ dữ liệu công việc.
-- Tìm kiếm và kết hợp bộ lọc theo trạng thái, độ ưu tiên.
-- Thêm, sửa, xóa và xem chi tiết công việc bằng modal.
-- Form validation hiển thị lỗi trực tiếp tại trường nhập.
-- Theo dõi và cập nhật tiến độ từng cột mốc đồ án.
-- Chỉnh sửa hồ sơ sinh viên và thông tin đồ án.
-- Empty state, success toast và hộp xác nhận xóa.
-- Dữ liệu được lưu vào `localStorage` với namespace `studyflow:*`.
-- Responsive cho desktop, tablet và mobile.
+- Editorial home page with a recipe of the day, live collection stats, and popular recipes
+- Recipe catalog with debounced search, category filters, sorting, loading skeletons, and empty states
+- Recipe details with serving-scaled ingredients, interactive cooking steps, favorites, and meal-plan actions
+- Weekly meal planner with an accessible recipe-picker modal, swap, and clear-day actions
+- Persistent favorites and meal plans using `localStorage`
+- Responsive mobile navigation, keyboard focus states, reduced-motion support, and route scroll restoration
 
-## Design Direction
+## Setup
 
-Giao diện theo phong cách **editorial productivity dashboard**: thực dụng, có cá tính và hạn chế hiệu ứng trang trí không cần thiết.
-
-- Màu chủ đạo: navy `#18212F`, nền kem `#F5F1E8`.
-- Màu nhấn: cam đất `#C86542`, xanh sage `#718B72`.
-- Heading dùng Newsreader; nội dung dùng DM Sans.
-- Spacing theo hệ 4/8px, card radius 16px, button radius 10px.
-- Card có border rõ và bóng đổ nhẹ; trạng thái luôn có cả màu và nhãn chữ.
-- Icon nét mảnh từ Lucide React.
-
-## Công nghệ
-
-- ReactJS 18, JavaScript và Vite
-- React Router DOM
-- CSS thuần
-- Lucide React
-- Vitest
-- localStorage
-
-## Cài đặt và chạy
-
-Yêu cầu Node.js 18 trở lên.
+Requires Node.js 18 or newer.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Các lệnh kiểm tra:
+Quality checks:
 
 ```bash
 npm run lint
-npm test
 npm run build
 ```
 
-## Cấu trúc chính
+## React Concepts Demonstrated
+
+- Functional components and React Router v6 routes
+- `useState` for local controls and `useReducer` for cooking-step progress
+- `useEffect` for simulated loading, persistence, focus management, and scroll restoration
+- `useMemo` and `useCallback` for derived data and stable shared actions
+- Context for recipes, favorites, and weekly meal-plan state
+- Custom `useLocalStorage`, `useDebounce`, and `useFilter` hooks
+- Route-level error boundary
+
+## Design Decisions
+
+The interface uses a warm, editorial food-journal direction instead of a generic dashboard. Terracotta, cream, and ink colors create strong contrast; Playfair Display gives headings personality while Inter keeps controls easy to scan. Reusable tokens, soft card elevation, generous spacing, and restrained motion keep the experience coherent.
+
+The responsive recipe grid moves from three columns to two and then one. The weekly planner remains horizontally scrollable on compact screens so each day stays readable. Modal focus trapping, Escape dismissal, visible focus rings, semantic controls, and reduced-motion support improve accessibility.
+
+## Structure
 
 ```text
 src/
 ├── components/
-│   ├── dashboard/     # Card thống kê
-│   ├── layout/        # App shell và sidebar responsive
-│   ├── tasks/         # Task card và form công việc
-│   └── ui/            # Badge, modal, toast, progress bar...
-├── context/           # State dùng chung của ứng dụng
-├── data/              # Mock data và label
-├── hooks/             # Custom hook localStorage
-├── pages/             # Dashboard, Tasks, Milestones, Settings
-├── styles/            # Design system và responsive CSS
-└── utils/             # Logic lọc, thống kê và định dạng
+│   ├── common/       # Button, badge, modal, skeleton, empty state, error boundary
+│   ├── layout/       # Responsive navbar and page wrapper
+│   └── recipe/       # Recipe card and filter bar
+├── context/          # Shared application state
+├── data/             # Twelve mock recipes
+├── hooks/            # Persistence, debounce, and filtering
+├── pages/            # Five routed screens
+└── styles/           # Design tokens, animation, and responsive UI
 ```
 
-## Kiến thức React được thể hiện
+## Commit Stages
 
-- **Component và props:** `TaskCard`, `StatCard`, `Badge`, `ProgressBar`, `Modal` nhận dữ liệu và callback qua props.
-- **useState:** quản lý form, modal, bộ lọc, toast và mobile navigation.
-- **useEffect:** đóng modal bằng phím Escape và đồng bộ dữ liệu vào localStorage.
-- **useMemo:** tính thống kê, deadline gần nhất và danh sách task sau khi lọc.
-- **Custom hook:** `useLocalStorage` tái sử dụng logic lưu dữ liệu trình duyệt.
-- **Context:** `StudyFlowContext` cung cấp task, milestone và profile cho các route.
-- **Event handling:** submit form, search, filter, CRUD task, cập nhật progress và chỉnh sửa cài đặt.
+1. Scaffold Vite, mock recipe data, hooks, and shared state
+2. Add the design system and reusable components
+3. Implement discovery, recipe detail, favorites, and weekly planning flows
+4. Polish accessibility, documentation, and production verification
 
-## Kịch bản demo gợi ý
-
-1. Mở Dashboard để giới thiệu hướng thiết kế và các thống kê động.
-2. Vào Công việc, kết hợp tìm kiếm với bộ lọc trạng thái.
-3. Mở form thêm mới nhưng submit thiếu dữ liệu để trình bày validation.
-4. Thêm hoặc sửa một task, sau đó refresh trang để chứng minh localStorage.
-5. Cập nhật tiến độ trong Cột mốc và quan sát tiến độ sidebar thay đổi.
-6. Sửa tên đồ án trong Cài đặt để cho thấy state dùng chung toàn ứng dụng.
-
-## Lịch sử triển khai
-
-Project được chia thành các commit rõ ràng theo từng giai đoạn:
-
-1. Khởi tạo Vite, React và routing.
-2. Xây dựng design system và responsive app shell.
-3. Hoàn thiện dashboard tổng quan.
-4. Thêm luồng quản lý công việc tương tác.
-5. Thêm milestone, settings và localStorage.
-6. Thêm kiểm thử và xác minh chất lượng.
-7. Hoàn thiện tài liệu dự án.
-
-## Ghi chú
-
-Đây là frontend demo, không sử dụng backend hoặc xác thực thật. Có thể xóa các khóa bắt đầu bằng `studyflow:` trong localStorage để khôi phục dữ liệu mẫu ban đầu.
+To reset demo state, remove the `gather:favorites` and `gather:meal-plan` keys from browser `localStorage`.

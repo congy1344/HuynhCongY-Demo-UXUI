@@ -12,3 +12,12 @@
   --shadow-raised: 0 4px 16px rgba(0,0,0,.1); --transition-fast: 150ms ease; --transition-base: 250ms ease;
   --max-width: 1200px; --nav-height: 72px; --control-height: 44px;
 }
+[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: #171411; --color-surface: #211d19; --color-border: #403832;
+  --color-text-primary: #f4eee8; --color-text-muted: #b9aea5; --color-accent: #dc7748;
+  --color-accent-dark: #f09a70; --color-accent-light: #39271f; --color-success: #6eb78d;
+  --color-warning: #e4a04e; --color-danger: #c85d53;
+  --shadow-card: 0 1px 3px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.22);
+  --shadow-raised: 0 6px 20px rgba(0,0,0,.35);
+}

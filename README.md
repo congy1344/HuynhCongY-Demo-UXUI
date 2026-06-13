@@ -9,6 +9,7 @@ Gather & Graze is a polished React UX/UI demo for discovering recipes, saving fa
 - Recipe details with serving-scaled ingredients, interactive cooking steps, favorites, and meal-plan actions
 - Weekly meal planner with an accessible recipe-picker modal, swap, and clear-day actions
 - Persistent favorites and meal plans using `localStorage`
+- Persistent Vietnamese/English language switcher and light/dark color modes
 - Responsive mobile navigation, keyboard focus states, reduced-motion support, and route scroll restoration
 
 ## Setup

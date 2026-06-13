@@ -1,69 +1,86 @@
 # Gather & Graze
 
-Gather & Graze is a polished React UX/UI demo for discovering recipes, saving favorites, and planning a week of meals. It uses mock data only, so the full experience runs locally without a backend.
+Gather & Graze là ứng dụng web quản lý công thức và lập kế hoạch bữa ăn được xây dựng dưới dạng React SPA. Dự án tập trung trình diễn kỹ năng thiết kế UX/UI, tổ chức component React và quản lý trạng thái phía client.
+
+Ứng dụng cho phép người dùng khám phá công thức, tìm kiếm và lọc món ăn, lưu món yêu thích, xem hướng dẫn nấu chi tiết và lên lịch món ăn cho từng ngày trong tuần. Toàn bộ dữ liệu được mô phỏng ở frontend và không yêu cầu backend.
+
+## Tech Stack
+
+- **React 18:** xây dựng giao diện bằng functional components
+- **React Router v6:** điều hướng giữa các trang trong SPA
+- **Vite:** môi trường phát triển và production build
+- **JavaScript:** ngôn ngữ chính của dự án
+- **Pure CSS:** design system, responsive layout và animations
+- **Context API:** quản lý trạng thái dùng chung
+- **localStorage:** lưu món yêu thích, lịch món ăn, ngôn ngữ và giao diện
+- **ESLint:** kiểm tra chất lượng mã nguồn
 
 ## Features
 
-- Editorial home page with a recipe of the day, live collection stats, and popular recipes
-- Recipe catalog with debounced search, category filters, sorting, loading skeletons, and empty states
-- Recipe details with serving-scaled ingredients, interactive cooking steps, favorites, and meal-plan actions
-- Weekly meal planner with an accessible recipe-picker modal, swap, and clear-day actions
-- Persistent favorites and meal plans using `localStorage`
-- Persistent Vietnamese/English language switcher and light/dark color modes
-- Responsive mobile navigation, keyboard focus states, reduced-motion support, and route scroll restoration
+- Trang chủ editorial với món ăn nổi bật, thống kê và danh sách phổ biến
+- Danh sách 12 công thức món ăn từ mock data
+- Tìm kiếm công thức theo tên với debounce
+- Lọc theo danh mục và sắp xếp theo tên, thời gian chuẩn bị hoặc đánh giá
+- Trang chi tiết công thức với nguyên liệu, hướng dẫn và điều chỉnh khẩu phần
+- Đánh dấu hoàn thành từng bước nấu ăn
+- Thêm hoặc xóa công thức khỏi danh sách yêu thích
+- Lập kế hoạch món ăn từ Thứ Hai đến Chủ Nhật
+- Thêm, thay đổi hoặc xóa món ăn trong lịch tuần
+- Chuyển đổi ngôn ngữ Tiếng Việt và Tiếng Anh
+- Chuyển đổi giao diện sáng và tối
+- Lưu trạng thái người dùng bằng `localStorage`
+- Loading skeleton, empty state và route transition
+- Responsive trên desktop, tablet và mobile
+- Modal hỗ trợ focus trap, phím `Escape` và thao tác bàn phím
 
-## Setup
+## React Concepts Used
 
-Requires Node.js 18 or newer.
+- **Functional Components:** toàn bộ giao diện được xây dựng bằng function components
+- **Props:** truyền dữ liệu và callback vào các component tái sử dụng
+- **`useState`:** quản lý bộ lọc, tìm kiếm, modal, khẩu phần và mobile navigation
+- **`useEffect`:** mô phỏng tải dữ liệu, đồng bộ theme, ngôn ngữ và scroll restoration
+- **`useContext`:** chia sẻ recipes, favorites, meal plan và UI preferences
+- **`useReducer`:** quản lý trạng thái hoàn thành các bước nấu ăn
+- **`useMemo`:** tính dữ liệu thống kê, món nổi bật và danh sách sau khi lọc
+- **`useCallback`:** giữ ổn định các hàm cập nhật trạng thái dùng chung
+- **Custom Hooks:** `useLocalStorage`, `useDebounce` và `useFilter`
+- **React Router:** định tuyến và truyền tham số recipe ID qua URL
+- **Error Boundary:** hiển thị trạng thái dự phòng khi route gặp lỗi
+- **Controlled Components:** quản lý input, select và các bộ lọc bằng React state
+
+## Installation
+
+### Yêu cầu
+
+- Node.js 20.19 trở lên
+- npm
+
+### Cài đặt và chạy
 
 ```bash
+git clone <repository-url>
+cd HuynhCongY-Demo-UXUI
 npm install
 npm run dev
 ```
 
-Quality checks:
+Sau khi chạy, mở địa chỉ được Vite hiển thị trong terminal, thường là:
+
+```text
+http://localhost:5173
+```
+
+### Kiểm tra chất lượng
 
 ```bash
 npm run lint
 npm run build
 ```
 
-## React Concepts Demonstrated
+### Xem production build
 
-- Functional components and React Router v6 routes
-- `useState` for local controls and `useReducer` for cooking-step progress
-- `useEffect` for simulated loading, persistence, focus management, and scroll restoration
-- `useMemo` and `useCallback` for derived data and stable shared actions
-- Context for recipes, favorites, and weekly meal-plan state
-- Custom `useLocalStorage`, `useDebounce`, and `useFilter` hooks
-- Route-level error boundary
-
-## Design Decisions
-
-The interface uses a warm, editorial food-journal direction instead of a generic dashboard. Terracotta, cream, and ink colors create strong contrast; Playfair Display gives headings personality while Inter keeps controls easy to scan. Reusable tokens, soft card elevation, generous spacing, and restrained motion keep the experience coherent.
-
-The responsive recipe grid moves from three columns to two and then one. The weekly planner remains horizontally scrollable on compact screens so each day stays readable. Modal focus trapping, Escape dismissal, visible focus rings, semantic controls, and reduced-motion support improve accessibility.
-
-## Structure
-
-```text
-src/
-├── components/
-│   ├── common/       # Button, badge, modal, skeleton, empty state, error boundary
-│   ├── layout/       # Responsive navbar and page wrapper
-│   └── recipe/       # Recipe card and filter bar
-├── context/          # Shared application state
-├── data/             # Twelve mock recipes
-├── hooks/            # Persistence, debounce, and filtering
-├── pages/            # Five routed screens
-└── styles/           # Design tokens, animation, and responsive UI
+```bash
+npm run preview
 ```
 
-## Commit Stages
-
-1. Scaffold Vite, mock recipe data, hooks, and shared state
-2. Add the design system and reusable components
-3. Implement discovery, recipe detail, favorites, and weekly planning flows
-4. Polish accessibility, documentation, and production verification
-
-To reset demo state, remove the `gather:favorites` and `gather:meal-plan` keys from browser `localStorage`.
+Để khôi phục dữ liệu mẫu, xóa các key bắt đầu bằng `gather:` trong `localStorage` của trình duyệt.

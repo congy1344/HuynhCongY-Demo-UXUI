@@ -4,6 +4,10 @@ Gather & Graze là ứng dụng web quản lý công thức và lập kế hoạ
 
 Ứng dụng cho phép người dùng khám phá công thức, tìm kiếm và lọc món ăn, lưu món yêu thích, xem hướng dẫn nấu chi tiết và lên lịch món ăn cho từng ngày trong tuần. Toàn bộ dữ liệu được mô phỏng ở frontend và không yêu cầu backend.
 
+## Live Demo
+
+[Trải nghiệm Gather & Graze trên Vercel](https://huynh-cong-y-demo-uxui-rhyoih5g6.vercel.app/)
+
 ## Preview
 
 ### Trang chủ - Dark mode

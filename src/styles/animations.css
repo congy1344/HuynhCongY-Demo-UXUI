@@ -1,0 +1,6 @@
+@keyframes shimmer { to { background-position-x: -200%; } }
+@keyframes fade-in { from { opacity: 0; transform: translateY(var(--space-2)); } to { opacity: 1; transform: translateY(0); } }
+@keyframes modal-in { from { opacity: 0; transform: translateY(var(--space-4)) scale(.98); } to { opacity: 1; transform: none; } }
+.page-transition { animation: fade-in var(--transition-base) both; }
+.skeleton { min-height: 220px; border-radius: var(--radius-lg); background: linear-gradient(100deg, #e9e4df 30%, #f8f6f4 50%, #e9e4df 70%); background-size: 200% 100%; animation: shimmer 1.3s infinite; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }

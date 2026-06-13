@@ -17,6 +17,7 @@ export default [
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       ...reactRefresh.configs.vite.rules,
+      'react-refresh/only-export-components': 'off',
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
